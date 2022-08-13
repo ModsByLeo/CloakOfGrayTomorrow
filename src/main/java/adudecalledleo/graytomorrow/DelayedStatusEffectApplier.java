@@ -28,5 +28,6 @@ public final class DelayedStatusEffectApplier implements ServerWorldTickEvents.E
 				target.addStatusEffect(effect);
 			}
 		}
+		EFFECTS.clear();
 	}
 }
