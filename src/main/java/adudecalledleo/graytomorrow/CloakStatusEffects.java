@@ -20,11 +20,13 @@ public final class CloakStatusEffects {
 
 	private CloakStatusEffects() {}
 
-	public static void applyChameleon(LivingEntity entity) {
+	public static boolean applyChameleon(LivingEntity entity) {
 		if (!entity.hasStatusEffect(TRUE_BLINDNESS)) {
 			entity.addStatusEffect(new StatusEffectInstance(CHAMELEON,
 					CHAMELEON_LENGTH, 0, false, false, true));
+			return true;
 		}
+		return false;
 	}
 
 	public static StatusEffectInstance createTrueBlindness(@Nullable StatusEffectInstance chameleonInstance) {

@@ -5,10 +5,12 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "LivingEntityMixin",
-    "MilkBucketItemMixin"
+    "MilkBucketItemMixin",
+    "ServerPlayerInteractionManagerMixin"
   ],
   "client": [
     "client.BackgroundRendererMixin",
+    "client.GameRendererMixin",
     "client.WorldRendererMixin"
   ],
   "injectors": {
