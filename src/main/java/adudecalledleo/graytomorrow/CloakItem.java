@@ -9,7 +9,6 @@ import org.jetbrains.annotations.Nullable;
 
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -36,26 +35,6 @@ public final class CloakItem extends TrinketItem {
 		} else {
 			return CloakState.NOT_EQUIPPED;
 		}
-	}
-
-	public static void applyChameleon(LivingEntity entity) {
-		if (!entity.hasStatusEffect(CloakStatusEffects.TRUE_BLINDNESS)) {
-			entity.addStatusEffect(new StatusEffectInstance(CloakStatusEffects.CHAMELEON,
-					CloakStatusEffects.CHAMELEON_LENGTH, 0, false, false, true));
-		}
-	}
-
-	public static StatusEffectInstance createTrueBlindness(@Nullable StatusEffectInstance chameleonInstance) {
-		int duration = CloakStatusEffects.CHAMELEON_LENGTH;
-		if (chameleonInstance != null) {
-			duration -= chameleonInstance.getDuration();
-		}
-		return new StatusEffectInstance(CloakStatusEffects.TRUE_BLINDNESS, duration, 0, false, false, true);
-	}
-
-	public static void removeChameleonAndApplyTrueBlindness(LivingEntity entity) {
-		entity.addStatusEffect(createTrueBlindness(entity.getStatusEffect(CloakStatusEffects.CHAMELEON)));
-		entity.removeStatusEffect(CloakStatusEffects.CHAMELEON);
 	}
 
 	@Override

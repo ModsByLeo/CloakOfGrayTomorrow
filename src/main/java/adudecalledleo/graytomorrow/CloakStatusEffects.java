@@ -2,7 +2,11 @@ package adudecalledleo.graytomorrow;
 
 import java.util.Set;
 
+import org.jetbrains.annotations.Nullable;
+
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffectType;
 
 public final class CloakStatusEffects {
@@ -15,4 +19,24 @@ public final class CloakStatusEffects {
 	public static final int CHAMELEON_LENGTH = 20 * 60; // 1 minute
 
 	private CloakStatusEffects() {}
+
+	public static void applyChameleon(LivingEntity entity) {
+		if (!entity.hasStatusEffect(TRUE_BLINDNESS)) {
+			entity.addStatusEffect(new StatusEffectInstance(CHAMELEON,
+					CHAMELEON_LENGTH, 0, false, false, true));
+		}
+	}
+
+	public static StatusEffectInstance createTrueBlindness(@Nullable StatusEffectInstance chameleonInstance) {
+		int duration = CHAMELEON_LENGTH;
+		if (chameleonInstance != null) {
+			duration -= chameleonInstance.getDuration();
+		}
+		return new StatusEffectInstance(TRUE_BLINDNESS, duration, 0, false, false, true);
+	}
+
+	public static void removeChameleonAndApplyTrueBlindness(LivingEntity entity) {
+		entity.addStatusEffect(createTrueBlindness(entity.getStatusEffect(CHAMELEON)));
+		entity.removeStatusEffect(CHAMELEON);
+	}
 }

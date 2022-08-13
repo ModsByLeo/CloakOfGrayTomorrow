@@ -23,9 +23,9 @@ public final class CloakNetworking {
 		server.execute(() -> {
 			if (CloakItem.isEquipped(player)) {
 				if (CloakHoodComponent.KEY.get(player).toggleHoodUp()) {
-					CloakItem.applyChameleon(player);
+					CloakStatusEffects.applyChameleon(player);
 				} else if (player.hasStatusEffect(CloakStatusEffects.CHAMELEON)) {
-					CloakItem.removeChameleonAndApplyTrueBlindness(player);
+					CloakStatusEffects.removeChameleonAndApplyTrueBlindness(player);
 				}
 			}
 		});

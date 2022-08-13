@@ -16,7 +16,7 @@ public class ChameleonStatusEffect extends StatusEffect {
 		// NOTE: will not get applied if clearStatusEffects was called
 		// this is intentional
 		if (!entity.hasStatusEffect(CloakStatusEffects.TRUE_BLINDNESS)) {
-			entity.addStatusEffect(CloakItem.createTrueBlindness(null));
+			entity.addStatusEffect(CloakStatusEffects.createTrueBlindness(null));
 		}
 	}
 }
