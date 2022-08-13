@@ -5,5 +5,7 @@
   "item.cloak_of_gray_tomorrow.cloak.tooltip[2]": "When deactivated, become fully blind for",
   "item.cloak_of_gray_tomorrow.cloak.tooltip[3]": "however long you were invisible for",
   "item.cloak_of_gray_tomorrow.cloak.tooltip[4]": "Toggle (hood) by pressing %1",
+  "effect.cloak_of_gray_tomorrow.chameleon": "Chameleon",
+  "effect.cloak_of_gray_tomorrow.true_blindness": "True Blindness",
   "key.cloak_of_gray_tomorrow.toggleHood": "Toggle Cloak Hood"
 }
