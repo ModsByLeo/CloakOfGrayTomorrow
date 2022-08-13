@@ -46,7 +46,9 @@ dependencies {
 
 	modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-base:${cca_version}"
 	modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${cca_version}"
-	modImplementation "dev.emi:trinkets:${trinkets_version}"
+	modImplementation("dev.emi:trinkets:${trinkets_version}") {
+		exclude group: "com.terraformersmc", module: "modmenu"
+	}
 	compileOnly "com.unascribed:ears-api:${ears_api_version}"
 }
 
@@ -77,10 +79,10 @@ if (Boolean.valueOf(project.use_runtime_deps)) {
 		// This greatly reduces the amount of time needed to start the game, but is generally unsafe in production
 		modRuntimeOnly "supercoder79:databreaker:${project.databreaker_version}"
 		// JellySquid's elemental optimizations (and Starlight)
-		modRuntimeOnly "maven.modrinth:lithium:${project.lithium_version}"
-		modRuntimeOnly "maven.modrinth:starlight:${project.starlight_version}"
-		modRuntimeOnly "maven.modrinth:sodium:${project.sodium_version}"
-		runtimeOnly 'org.joml:joml:1.10.4' // needed for Sodium
+		//modRuntimeOnly "maven.modrinth:lithium:${project.lithium_version}"
+		//modRuntimeOnly "maven.modrinth:starlight:${project.starlight_version}"
+		//modRuntimeOnly "maven.modrinth:sodium:${project.sodium_version}"
+		//runtimeOnly 'org.joml:joml:1.10.4' // needed for Sodium
 	}
 }
 

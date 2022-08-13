@@ -41,7 +41,7 @@ public final class CloakItem extends TrinketItem {
 	public static void applyChameleon(LivingEntity entity) {
 		if (!entity.hasStatusEffect(CloakStatusEffects.TRUE_BLINDNESS)) {
 			entity.addStatusEffect(new StatusEffectInstance(CloakStatusEffects.CHAMELEON,
-					CloakStatusEffects.CHAMELEON_LENGTH, 1, false, false, true));
+					CloakStatusEffects.CHAMELEON_LENGTH, 0, false, false, true));
 		}
 	}
 
@@ -50,7 +50,7 @@ public final class CloakItem extends TrinketItem {
 		if (chameleonInstance != null) {
 			duration -= chameleonInstance.getDuration();
 		}
-		return new StatusEffectInstance(CloakStatusEffects.TRUE_BLINDNESS, duration, 1, false, false, true);
+		return new StatusEffectInstance(CloakStatusEffects.TRUE_BLINDNESS, duration, 0, false, false, true);
 	}
 
 	public static void removeChameleonAndApplyTrueBlindness(LivingEntity entity) {

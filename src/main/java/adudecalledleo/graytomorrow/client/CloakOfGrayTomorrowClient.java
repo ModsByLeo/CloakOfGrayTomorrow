@@ -19,11 +19,13 @@ import org.quiltmc.qsl.networking.api.client.ClientPlayNetworking;
 
 @Environment(EnvType.CLIENT)
 public final class CloakOfGrayTomorrowClient implements ClientModInitializer, ClientWorldTickEvents.End {
-	public static final KeyBind keyToggleHood = KeyBindingHelper.registerKeyBinding(
-			new KeyBind(CloakOfGrayTomorrow.KEY_TOGGLE_HOOD_ID, GLFW.GLFW_KEY_V, KeyBind.GAMEPLAY_CATEGORY));
+	public static final KeyBind keyToggleHood =
+			new KeyBind(CloakOfGrayTomorrow.KEY_TOGGLE_HOOD_ID, GLFW.GLFW_KEY_V, KeyBind.GAMEPLAY_CATEGORY);
 
 	@Override
-	public void onInitializeClient(ModContainer mod) {}
+	public void onInitializeClient(ModContainer mod) {
+		KeyBindingHelper.registerKeyBinding(keyToggleHood);
+	}
 
 	@Override
 	public void endWorldTick(MinecraftClient client, ClientWorld world) {

@@ -16,15 +16,12 @@
 			},
 			"icon": "assets/cloak_of_gray_tomorrow/icon.png"
 		},
-		"cardinal-components": [
-			"cloak_of_gray_tomorrow:cloak_hood"
-		],
 		"intermediate_mappings": "net.fabricmc:intermediary",
 		"entrypoints": {
 			"init": "adudecalledleo.graytomorrow.CloakOfGrayTomorrow",
 			"cardinal-components": "adudecalledleo.graytomorrow.CloakOfGrayTomorrow",
 			"events": "adudecalledleo.graytomorrow.DelayedStatusEffectApplier",
-			"client": "adudecalledleo.graytomorrow.client.CloakOfGrayTomorrowClient",
+			"client_init": "adudecalledleo.graytomorrow.client.CloakOfGrayTomorrowClient",
 			"client_events": "adudecalledleo.graytomorrow.client.CloakOfGrayTomorrowClient"
 		},
 		"depends": [
@@ -54,5 +51,8 @@
 			}
 		]
 	},
-	"mixin": "example_mod.mixins.json"
+	"mixin": "cloak_of_gray_tomorrow.mixins.json",
+	"cardinal-components": [
+		"cloak_of_gray_tomorrow:cloak_hood"
+	]
 }

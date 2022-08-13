@@ -27,12 +27,14 @@ public final class CloakOfGrayTomorrow implements ModInitializer, EntityComponen
 
 	@Override
 	public void onInitialize(ModContainer mod) {
+		LOGGER.info("2 YEARS");
+
 		Registry.register(Registry.ITEM, id("cloak"), CloakItem.INSTANCE);
 
 		Registry.register(Registry.STATUS_EFFECT, id("chameleon"), CloakStatusEffects.CHAMELEON);
 		Registry.register(Registry.STATUS_EFFECT, id("true_blindness"), CloakStatusEffects.TRUE_BLINDNESS);
 
-		LOGGER.info("2 YEARS");
+		CloakNetworking.register();
 
 		if (QuiltLoader.isModLoaded("ears")) {
 			EarsCompat.init();
