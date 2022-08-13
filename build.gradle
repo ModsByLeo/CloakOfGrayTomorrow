@@ -13,6 +13,21 @@ repositories {
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
+
+	maven {
+		name = "TerraformersMC"
+		url = "https://maven.terraformersmc.com/"
+	}
+	maven {
+		name = "Ladysnake Libs"
+		url = "https://ladysnake.jfrog.io/artifactory/mods"
+	}
+	maven {
+		url "https://repo.unascribed.com"
+		content {
+			includeGroup "com.unascribed"
+		}
+	}
 }
 
 // All dependency versions are declared in the gradle.properties file
@@ -28,6 +43,45 @@ dependencies {
 	modImplementation "org.quiltmc.quilted-fabric-api:quilted-fabric-api:${quilted_fabric_api_version}-${minecraft_version}"
 	// If you want to use QSL by itself over Quilted Fabric API, uncomment the line below (and comment out the line above):
 	// 	modImplementation "org.quiltmc:qsl:${qsl_version}+${minecraft_version}"
+
+	modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-base:${cca_version}"
+	modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${cca_version}"
+	modImplementation "dev.emi:trinkets:${trinkets_version}"
+	compileOnly "com.unascribed:ears-api:${ears_api_version}"
+}
+
+if (Boolean.valueOf(project.use_runtime_deps)) {
+	repositories {
+		maven {
+			name = "JitPack"
+			url = "https://jitpack.io"
+			content {
+				includeGroupByRegex "com\\.github\\..*"
+			}
+		}
+		maven {
+			name = "Modrinth Maven"
+			url = "https://api.modrinth.com/maven"
+			content {
+				includeGroupByRegex "maven\\.modrinth"
+			}
+		}
+		maven {
+			name = "Gegy's Maven"
+			url = "https://maven.gegy.dev/"
+		}
+	}
+
+	dependencies {
+		// DataBreaker applies a number of patches to eliminate the loading of data fixers
+		// This greatly reduces the amount of time needed to start the game, but is generally unsafe in production
+		modRuntimeOnly "supercoder79:databreaker:${project.databreaker_version}"
+		// JellySquid's elemental optimizations (and Starlight)
+		modRuntimeOnly "maven.modrinth:lithium:${project.lithium_version}"
+		modRuntimeOnly "maven.modrinth:starlight:${project.starlight_version}"
+		modRuntimeOnly "maven.modrinth:sodium:${project.sodium_version}"
+		runtimeOnly 'org.joml:joml:1.10.4' // needed for Sodium
+	}
 }
 
 processResources {
