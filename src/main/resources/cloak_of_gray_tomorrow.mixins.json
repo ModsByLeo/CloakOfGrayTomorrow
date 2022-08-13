@@ -9,6 +9,7 @@
     "ServerPlayerInteractionManagerMixin"
   ],
   "client": [
+    "client.ArmorFeatureRendererMixin",
     "client.BackgroundRendererMixin",
     "client.GameRendererMixin",
     "client.WorldRendererMixin"
