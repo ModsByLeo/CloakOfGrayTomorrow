@@ -13,8 +13,10 @@ public class ChameleonStatusEffect extends StatusEffect {
 	@Override
 	public void onRemoved(LivingEntity entity, AttributeContainer attributes, int amplifier) {
 		super.onRemoved(entity, attributes, amplifier);
+		// NOTE: will not get applied if clearStatusEffects was called
+		// this is intentional
 		if (!entity.hasStatusEffect(CloakStatusEffects.TRUE_BLINDNESS)) {
-			DelayedStatusEffectApplier.add(entity, CloakItem.createTrueBlindness(null));
+			entity.addStatusEffect(CloakItem.createTrueBlindness(null));
 		}
 	}
 }

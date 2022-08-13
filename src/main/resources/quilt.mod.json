@@ -20,7 +20,6 @@
 		"entrypoints": {
 			"init": "adudecalledleo.graytomorrow.CloakOfGrayTomorrow",
 			"cardinal-components": "adudecalledleo.graytomorrow.CloakOfGrayTomorrow",
-			"events": "adudecalledleo.graytomorrow.DelayedStatusEffectApplier",
 			"client_init": "adudecalledleo.graytomorrow.client.CloakOfGrayTomorrowClient",
 			"client_events": "adudecalledleo.graytomorrow.client.CloakOfGrayTomorrowClient"
 		},
