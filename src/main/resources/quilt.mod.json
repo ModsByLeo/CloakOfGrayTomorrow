@@ -55,7 +55,7 @@
 	},
 	"mixin": "graytomorrow.mixins.json",
 	"cardinal-components": [
-		"graytomorrow:armor_invisible",
+		"graytomorrow:equipment_invisible",
 		"graytomorrow:hood_up"
 	]
 }

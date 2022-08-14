@@ -23,23 +23,23 @@ public abstract class LivingEntityMixin {
 	@Inject(method = "updatePotionVisibility",
 			at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;setInvisible(Z)V",
 					ordinal = 0, shift = At.Shift.AFTER))
-	private void graytomorrow$resetArmorVisibility(CallbackInfo ci) {
-		GrayTomorrowComponents.ARMOR_INVISIBLE.get(this).setValue(false);
+	private void graytomorrow$resetEquipmentVisibility(CallbackInfo ci) {
+		GrayTomorrowComponents.EQUIPMENT_INVISIBLE.get(this).setValue(false);
 	}
 
 	@Redirect(method = "updatePotionVisibility",
 			at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;setInvisible(Z)V",
 					ordinal = 1))
-	private void graytomorrow$updateArmorVisibility(LivingEntity instance, boolean hasInvisibility) {
+	private void graytomorrow$updateEquipmentVisibility(LivingEntity instance, boolean hasInvisibility) {
 		boolean hasChameleon = instance.hasStatusEffect(GrayTomorrowStatusEffects.CHAMELEON);
 		instance.setInvisible(hasInvisibility || hasChameleon);
-		GrayTomorrowComponents.ARMOR_INVISIBLE.get(this).setValue(hasChameleon);
-		GrayTomorrowComponents.ARMOR_INVISIBLE.sync(this);
+		GrayTomorrowComponents.EQUIPMENT_INVISIBLE.get(this).setValue(hasChameleon);
+		GrayTomorrowComponents.EQUIPMENT_INVISIBLE.sync(this);
 	}
 
 	@Inject(method = "getArmorVisibility", at = @At("HEAD"), cancellable = true)
 	private void graytomorrow$forceNoArmorVisibility(CallbackInfoReturnable<Float> cir) {
-		if (GrayTomorrowComponents.get(GrayTomorrowComponents.ARMOR_INVISIBLE, this)) {
+		if (GrayTomorrowComponents.get(GrayTomorrowComponents.EQUIPMENT_INVISIBLE, this)) {
 			cir.setReturnValue(0.0F);
 		}
 	}

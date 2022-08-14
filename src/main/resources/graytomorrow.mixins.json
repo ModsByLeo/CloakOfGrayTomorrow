@@ -12,6 +12,7 @@
     "client.ArmorFeatureRendererMixin",
     "client.BackgroundRendererMixin",
     "client.GameRendererMixin",
+    "client.HeldItemFeatureRendererMixin",
     "client.TrinketFeatureRendererMixin",
     "client.WorldRendererMixin"
   ],

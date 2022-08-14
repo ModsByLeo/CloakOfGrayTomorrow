@@ -1,6 +1,6 @@
 {
   "item.graytomorrow.cloak": "Cloak of Gray Tomorrow",
-  "item.graytomorrow.cloak.tooltip[0]": "Become fully invisible, including armor!",
+  "item.graytomorrow.cloak.tooltip[0]": "Become fully invisible, including equipment!",
   "item.graytomorrow.cloak.tooltip[1]": "Lasts for 1 minute, or until deactivated",
   "item.graytomorrow.cloak.tooltip[2]": "When deactivated, become fully blind for",
   "item.graytomorrow.cloak.tooltip[3]": "however long you were invisible for",

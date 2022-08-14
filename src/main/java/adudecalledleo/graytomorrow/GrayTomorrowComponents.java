@@ -9,8 +9,8 @@ import dev.onyxstudios.cca.api.v3.entity.RespawnCopyStrategy;
 import net.minecraft.entity.LivingEntity;
 
 public final class GrayTomorrowComponents implements EntityComponentInitializer {
-	public static final ComponentKey<BooleanComponent> ARMOR_INVISIBLE =
-			ComponentRegistry.getOrCreate(GrayTomorrow.id("armor_invisible"), BooleanComponent.class);
+	public static final ComponentKey<BooleanComponent> EQUIPMENT_INVISIBLE =
+			ComponentRegistry.getOrCreate(GrayTomorrow.id("equipment_invisible"), BooleanComponent.class);
 	public static final ComponentKey<BooleanComponent> HOOD_UP =
 			ComponentRegistry.getOrCreate(GrayTomorrow.id("hood_up"), BooleanComponent.class);
 
@@ -20,7 +20,7 @@ public final class GrayTomorrowComponents implements EntityComponentInitializer 
 
 	@Override
 	public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry) {
-		registry.beginRegistration(LivingEntity.class, ARMOR_INVISIBLE)
+		registry.beginRegistration(LivingEntity.class, EQUIPMENT_INVISIBLE)
 				.respawnStrategy(RespawnCopyStrategy.LOSSLESS_ONLY)
 				.end(entity -> new BooleanComponent(false));
 		registry.beginRegistration(LivingEntity.class, HOOD_UP)
