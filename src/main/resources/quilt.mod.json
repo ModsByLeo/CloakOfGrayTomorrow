@@ -18,10 +18,10 @@
 		},
 		"intermediate_mappings": "net.fabricmc:intermediary",
 		"entrypoints": {
-			"init": "adudecalledleo.graytomorrow.CloakOfGrayTomorrow",
-			"cardinal-components": "adudecalledleo.graytomorrow.CloakComponents",
-			"client_init": "adudecalledleo.graytomorrow.client.CloakOfGrayTomorrowClient",
-			"client_events": "adudecalledleo.graytomorrow.client.CloakOfGrayTomorrowClient"
+			"init": "adudecalledleo.graytomorrow.GrayTomorrow",
+			"cardinal-components": "adudecalledleo.graytomorrow.GrayTomorrowComponents",
+			"client_init": "adudecalledleo.graytomorrow.client.GrayTomorrowClient",
+			"client_events": "adudecalledleo.graytomorrow.client.GrayTomorrowClient"
 		},
 		"depends": [
 			{

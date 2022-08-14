@@ -9,7 +9,7 @@ import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffectType;
 
-public final class CloakStatusEffects {
+public final class GrayTomorrowStatusEffects {
 	// TODO colors
 	public static final StatusEffect CHAMELEON = new ChameleonStatusEffect(StatusEffectType.BENEFICIAL, 0xFFFFFF);
 	public static final StatusEffect TRUE_BLINDNESS = new StatusEffect(StatusEffectType.HARMFUL, 0x00000) {};
@@ -18,7 +18,7 @@ public final class CloakStatusEffects {
 
 	public static final int CHAMELEON_LENGTH = 20 * 60; // 1 minute
 
-	private CloakStatusEffects() {}
+	private GrayTomorrowStatusEffects() {}
 
 	public static boolean applyChameleon(LivingEntity entity) {
 		if (!entity.hasStatusEffect(TRUE_BLINDNESS)) {

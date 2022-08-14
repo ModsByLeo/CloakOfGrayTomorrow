@@ -1,17 +1,17 @@
 package adudecalledleo.graytomorrow.compat;
 
 import adudecalledleo.graytomorrow.CloakItem;
-import adudecalledleo.graytomorrow.CloakOfGrayTomorrow;
+import adudecalledleo.graytomorrow.GrayTomorrow;
 import com.unascribed.ears.api.EarsFeatureType;
 import com.unascribed.ears.api.registry.EarsInhibitorRegistry;
 
 import net.minecraft.entity.player.PlayerEntity;
 
-public final class EarsCompat {
-	private EarsCompat() {}
+public final class GrayTomorrowEarsCompat {
+	private GrayTomorrowEarsCompat() {}
 
 	public static void init() {
-		EarsInhibitorRegistry.register(CloakOfGrayTomorrow.NAMESPACE,
+		EarsInhibitorRegistry.register(GrayTomorrow.NAMESPACE,
 				((type, peer) -> shouldInhibit(type, (PlayerEntity) peer)));
 	}
 

@@ -30,7 +30,7 @@ public final class CloakItem extends TrinketItem {
 
 	public static CloakState getState(LivingEntity entity) {
 		if (isEquipped(entity)) {
-			return CloakComponents.get(CloakComponents.HOOD_UP, entity) ? CloakState.HOOD_UP : CloakState.HOOD_DOWN;
+			return GrayTomorrowComponents.get(GrayTomorrowComponents.HOOD_UP, entity) ? CloakState.HOOD_UP : CloakState.HOOD_DOWN;
 		} else {
 			return CloakState.NOT_EQUIPPED;
 		}
@@ -44,14 +44,14 @@ public final class CloakItem extends TrinketItem {
 		tooltip.add(Text.translatable(key + "[2]").styled(style -> style.withColor(Formatting.GRAY)));
 		tooltip.add(Text.translatable(key + "[3]").styled(style -> style.withColor(Formatting.GRAY)));
 		tooltip.add(Text.translatable(key + "[4]",
-						Texts.bracketed(Text.keyBind(CloakOfGrayTomorrow.KEY_TOGGLE_HOOD_ID)
+						Texts.bracketed(Text.keyBind(GrayTomorrow.KEY_TOGGLE_HOOD_ID)
 								.styled(style -> style.withColor(Formatting.WHITE))))
 				.styled(style -> style.withColor(Formatting.GRAY)));
 	}
 
 	@Override
 	public void onEquip(ItemStack stack, SlotReference slot, LivingEntity entity) {
-		CloakComponents.HOOD_UP.get(entity).setValue(false);
-		CloakComponents.HOOD_UP.sync(entity);
+		GrayTomorrowComponents.HOOD_UP.get(entity).setValue(false);
+		GrayTomorrowComponents.HOOD_UP.sync(entity);
 	}
 }

@@ -1,6 +1,6 @@
 package adudecalledleo.graytomorrow.mixin.client;
 
-import adudecalledleo.graytomorrow.CloakStatusEffects;
+import adudecalledleo.graytomorrow.GrayTomorrowStatusEffects;
 import com.mojang.blaze3d.systems.RenderSystem;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -29,7 +29,7 @@ public abstract class BackgroundRendererMixin {
 	private static void blindPeopleSeeBlackProbably(Camera camera, float tickDelta, ClientWorld world, int viewDistance,
 			float skyDarkness, CallbackInfo ci) {
 		if (camera.getFocusedEntity() instanceof LivingEntity living
-				&& living.hasStatusEffect(CloakStatusEffects.TRUE_BLINDNESS)) {
+				&& living.hasStatusEffect(GrayTomorrowStatusEffects.TRUE_BLINDNESS)) {
 			red = 0;
 			green = 0;
 			blue = 0;

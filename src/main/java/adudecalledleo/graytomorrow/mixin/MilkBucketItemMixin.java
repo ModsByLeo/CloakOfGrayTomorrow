@@ -2,7 +2,7 @@ package adudecalledleo.graytomorrow.mixin;
 
 import java.util.Iterator;
 
-import adudecalledleo.graytomorrow.CloakStatusEffects;
+import adudecalledleo.graytomorrow.GrayTomorrowStatusEffects;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
@@ -20,7 +20,7 @@ public abstract class MilkBucketItemMixin {
 		Iterator<StatusEffectInstance> effectIt = instance.getStatusEffects().iterator();
 		while (effectIt.hasNext()) {
 			var effect = effectIt.next();
-			if (!CloakStatusEffects.ALL.contains(effect.getEffectType())) {
+			if (!GrayTomorrowStatusEffects.ALL.contains(effect.getEffectType())) {
 				effect.getEffectType().onRemoved(instance, instance.getAttributes(), effect.getAmplifier());
 				effectIt.remove();
 				removedAny = true;

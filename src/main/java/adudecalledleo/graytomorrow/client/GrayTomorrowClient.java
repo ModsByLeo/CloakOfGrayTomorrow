@@ -1,7 +1,7 @@
 package adudecalledleo.graytomorrow.client;
 
-import adudecalledleo.graytomorrow.CloakNetworking;
-import adudecalledleo.graytomorrow.CloakOfGrayTomorrow;
+import adudecalledleo.graytomorrow.GrayTomorrow;
+import adudecalledleo.graytomorrow.GrayTomorrowNetworking;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
@@ -18,9 +18,9 @@ import org.quiltmc.qsl.networking.api.PacketByteBufs;
 import org.quiltmc.qsl.networking.api.client.ClientPlayNetworking;
 
 @Environment(EnvType.CLIENT)
-public final class CloakOfGrayTomorrowClient implements ClientModInitializer, ClientWorldTickEvents.End {
+public final class GrayTomorrowClient implements ClientModInitializer, ClientWorldTickEvents.End {
 	public static final KeyBind keyToggleHood =
-			new KeyBind(CloakOfGrayTomorrow.KEY_TOGGLE_HOOD_ID, GLFW.GLFW_KEY_V, KeyBind.GAMEPLAY_CATEGORY);
+			new KeyBind(GrayTomorrow.KEY_TOGGLE_HOOD_ID, GLFW.GLFW_KEY_V, KeyBind.GAMEPLAY_CATEGORY);
 
 	@Override
 	public void onInitializeClient(ModContainer mod) {
@@ -30,7 +30,7 @@ public final class CloakOfGrayTomorrowClient implements ClientModInitializer, Cl
 	@Override
 	public void endWorldTick(MinecraftClient client, ClientWorld world) {
 		if (keyToggleHood.wasPressed()) {
-			ClientPlayNetworking.send(CloakNetworking.C2S_TOGGLE_CLOAK_HOOD, PacketByteBufs.empty());
+			ClientPlayNetworking.send(GrayTomorrowNetworking.C2S_TOGGLE_CLOAK_HOOD, PacketByteBufs.empty());
 		}
 	}
 }

@@ -2,8 +2,8 @@ package adudecalledleo.graytomorrow.mixin;
 
 import java.util.Map;
 
-import adudecalledleo.graytomorrow.CloakComponents;
-import adudecalledleo.graytomorrow.CloakStatusEffects;
+import adudecalledleo.graytomorrow.GrayTomorrowComponents;
+import adudecalledleo.graytomorrow.GrayTomorrowStatusEffects;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -24,21 +24,21 @@ public abstract class LivingEntityMixin {
 			at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;setInvisible(Z)V",
 					ordinal = 0, shift = At.Shift.AFTER))
 	private void resetArmorVisibility(CallbackInfo ci) {
-		CloakComponents.ARMOR_INVISIBLE.get(this).setValue(false);
+		GrayTomorrowComponents.ARMOR_INVISIBLE.get(this).setValue(false);
 	}
 
 	@Redirect(method = "updatePotionVisibility",
 			at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;setInvisible(Z)V",
 					ordinal = 1))
 	private void updateArmorVisibility(LivingEntity instance, boolean hasInvisibility) {
-		boolean hasChameleon = instance.hasStatusEffect(CloakStatusEffects.CHAMELEON);
+		boolean hasChameleon = instance.hasStatusEffect(GrayTomorrowStatusEffects.CHAMELEON);
 		instance.setInvisible(hasInvisibility || hasChameleon);
-		CloakComponents.ARMOR_INVISIBLE.get(this).setValue(hasChameleon);
+		GrayTomorrowComponents.ARMOR_INVISIBLE.get(this).setValue(hasChameleon);
 	}
 
 	@Inject(method = "getArmorVisibility", at = @At("HEAD"), cancellable = true)
 	private void forceNoArmorVisibility(CallbackInfoReturnable<Float> cir) {
-		if (CloakComponents.get(CloakComponents.ARMOR_INVISIBLE, this)) {
+		if (GrayTomorrowComponents.get(GrayTomorrowComponents.ARMOR_INVISIBLE, this)) {
 			cir.setReturnValue(0.0F);
 		}
 	}
@@ -51,7 +51,7 @@ public abstract class LivingEntityMixin {
 			at = @At("HEAD"), cancellable = true)
 	private void checkTrueBlindness(StatusEffect effect, CallbackInfoReturnable<Boolean> cir) {
 		if (effect == StatusEffects.BLINDNESS) {
-			cir.setReturnValue(this.activeStatusEffects.containsKey(CloakStatusEffects.TRUE_BLINDNESS)
+			cir.setReturnValue(this.activeStatusEffects.containsKey(GrayTomorrowStatusEffects.TRUE_BLINDNESS)
 					|| this.activeStatusEffects.containsKey(StatusEffects.BLINDNESS));
 		}
 	}

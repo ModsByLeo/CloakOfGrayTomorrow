@@ -8,11 +8,11 @@ import dev.onyxstudios.cca.api.v3.entity.RespawnCopyStrategy;
 
 import net.minecraft.entity.LivingEntity;
 
-public final class CloakComponents implements EntityComponentInitializer {
+public final class GrayTomorrowComponents implements EntityComponentInitializer {
 	public static final ComponentKey<BooleanComponent> ARMOR_INVISIBLE =
-			ComponentRegistry.getOrCreate(CloakOfGrayTomorrow.id("armor_invisible"), BooleanComponent.class);
+			ComponentRegistry.getOrCreate(GrayTomorrow.id("armor_invisible"), BooleanComponent.class);
 	public static final ComponentKey<BooleanComponent> HOOD_UP =
-			ComponentRegistry.getOrCreate(CloakOfGrayTomorrow.id("hood_up"), BooleanComponent.class);
+			ComponentRegistry.getOrCreate(GrayTomorrow.id("hood_up"), BooleanComponent.class);
 
 	public static boolean get(ComponentKey<BooleanComponent> key, Object provider) {
 		return key.maybeGet(provider).map(BooleanComponent::getValue).orElse(false);

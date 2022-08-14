@@ -10,33 +10,33 @@ import net.minecraft.util.Identifier;
 import org.quiltmc.qsl.networking.api.PacketSender;
 import org.quiltmc.qsl.networking.api.ServerPlayNetworking;
 
-public final class CloakNetworking {
-	private CloakNetworking() {}
+public final class GrayTomorrowNetworking {
+	private GrayTomorrowNetworking() {}
 
-	public static final Identifier C2S_TOGGLE_CLOAK_HOOD = CloakOfGrayTomorrow.id("toggle_cloak_hood");
+	public static final Identifier C2S_TOGGLE_CLOAK_HOOD = GrayTomorrow.id("toggle_cloak_hood");
 
 	public static void register() {
-		ServerPlayNetworking.registerGlobalReceiver(C2S_TOGGLE_CLOAK_HOOD, CloakNetworking::handleToggleCloakHood);
+		ServerPlayNetworking.registerGlobalReceiver(C2S_TOGGLE_CLOAK_HOOD, GrayTomorrowNetworking::handleToggleCloakHood);
 	}
 
 	private static void handleToggleCloakHood(MinecraftServer server, ServerPlayerEntity player,
 			ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
 		server.execute(() -> {
 			if (CloakItem.isEquipped(player)) {
-				if (CloakComponents.HOOD_UP.get(player).toggleValue()) {
+				if (GrayTomorrowComponents.HOOD_UP.get(player).toggleValue()) {
 					player.sendMessage(
-							Text.translatable("message." + CloakOfGrayTomorrow.NAMESPACE + ".hood_up"),
+							Text.translatable("message." + GrayTomorrow.NAMESPACE + ".hood_up"),
 							true);
-					CloakStatusEffects.applyChameleon(player);
+					GrayTomorrowStatusEffects.applyChameleon(player);
 				} else {
 					player.sendMessage(
-							Text.translatable("message." + CloakOfGrayTomorrow.NAMESPACE + ".hood_down"),
+							Text.translatable("message." + GrayTomorrow.NAMESPACE + ".hood_down"),
 							true);
-					if (player.hasStatusEffect(CloakStatusEffects.CHAMELEON)) {
-						CloakStatusEffects.removeChameleonAndApplyTrueBlindness(player);
+					if (player.hasStatusEffect(GrayTomorrowStatusEffects.CHAMELEON)) {
+						GrayTomorrowStatusEffects.removeChameleonAndApplyTrueBlindness(player);
 					}
 				}
-				CloakComponents.HOOD_UP.sync(player);
+				GrayTomorrowComponents.HOOD_UP.sync(player);
 			}
 		});
 	}

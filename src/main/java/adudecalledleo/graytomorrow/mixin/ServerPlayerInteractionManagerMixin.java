@@ -1,7 +1,7 @@
 package adudecalledleo.graytomorrow.mixin;
 
-import adudecalledleo.graytomorrow.CloakOfGrayTomorrow;
-import adudecalledleo.graytomorrow.CloakStatusEffects;
+import adudecalledleo.graytomorrow.GrayTomorrow;
+import adudecalledleo.graytomorrow.GrayTomorrowStatusEffects;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -21,9 +21,9 @@ public abstract class ServerPlayerInteractionManagerMixin {
 	@Inject(method = "interactBlock", at = @At("HEAD"), cancellable = true)
 	private void blockThatBlock(ServerPlayerEntity player, World world, ItemStack stack, Hand hand,
 			BlockHitResult hitResult, CallbackInfoReturnable<ActionResult> cir) {
-		if (player.hasStatusEffect(CloakStatusEffects.TRUE_BLINDNESS)) {
+		if (player.hasStatusEffect(GrayTomorrowStatusEffects.TRUE_BLINDNESS)) {
 			player.sendMessage(
-					Text.translatable("message." + CloakOfGrayTomorrow.NAMESPACE + ".no_blocks"), true);
+					Text.translatable("message." + GrayTomorrow.NAMESPACE + ".no_blocks"), true);
 			cir.setReturnValue(ActionResult.FAIL);
 		}
 	}
@@ -31,9 +31,9 @@ public abstract class ServerPlayerInteractionManagerMixin {
 	@Inject(method = "interactItem", at = @At("HEAD"), cancellable = true)
 	private void blockThatItem(ServerPlayerEntity player, World world, ItemStack stack, Hand hand,
 			CallbackInfoReturnable<ActionResult> cir) {
-		if (player.hasStatusEffect(CloakStatusEffects.TRUE_BLINDNESS)) {
+		if (player.hasStatusEffect(GrayTomorrowStatusEffects.TRUE_BLINDNESS)) {
 			player.sendMessage(
-					Text.translatable("message." + CloakOfGrayTomorrow.NAMESPACE + ".no_blocks"), true);
+					Text.translatable("message." + GrayTomorrow.NAMESPACE + ".no_blocks"), true);
 			cir.setReturnValue(ActionResult.FAIL);
 		}
 	}

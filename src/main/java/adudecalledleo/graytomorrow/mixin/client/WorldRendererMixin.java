@@ -1,6 +1,6 @@
 package adudecalledleo.graytomorrow.mixin.client;
 
-import adudecalledleo.graytomorrow.CloakStatusEffects;
+import adudecalledleo.graytomorrow.GrayTomorrowStatusEffects;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -25,7 +25,7 @@ public abstract class WorldRendererMixin {
 			Camera camera, GameRenderer gameRenderer, LightmapTextureManager lightmapTextureManager,
 			Matrix4f projectionMatrix, CallbackInfo ci) {
 		if (camera.getFocusedEntity() instanceof LivingEntity living
-				&& living.hasStatusEffect(CloakStatusEffects.TRUE_BLINDNESS)) {
+				&& living.hasStatusEffect(GrayTomorrowStatusEffects.TRUE_BLINDNESS)) {
 			ci.cancel();
 		}
 	}
