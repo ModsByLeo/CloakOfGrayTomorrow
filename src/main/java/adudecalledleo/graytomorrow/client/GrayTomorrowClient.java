@@ -2,7 +2,7 @@ package adudecalledleo.graytomorrow.client;
 
 import adudecalledleo.graytomorrow.GrayTomorrow;
 import adudecalledleo.graytomorrow.GrayTomorrowNetworking;
-import adudecalledleo.graytomorrow.client.compat.GrayTomorrowEarsCompat;
+import adudecalledleo.graytomorrow.compat.client.GrayTomorrowEarsCompat;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;

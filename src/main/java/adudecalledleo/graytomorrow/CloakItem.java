@@ -9,8 +9,6 @@ import org.jetbrains.annotations.Nullable;
 
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.text.Texts;
@@ -18,14 +16,12 @@ import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 
 public final class CloakItem extends TrinketItem {
-	public static final Item INSTANCE = new CloakItem(new Item.Settings().group(ItemGroup.COMBAT));
-
 	public CloakItem(Settings settings) {
 		super(settings);
 	}
 
 	public static boolean isEquipped(LivingEntity entity) {
-		return TrinketsApi.getTrinketComponent(entity).map(c -> c.isEquipped(INSTANCE)).orElse(false);
+		return TrinketsApi.getTrinketComponent(entity).map(c -> c.isEquipped(GrayTomorrow.CLOAK_ITEM)).orElse(false);
 	}
 
 	public static CloakState getState(LivingEntity entity) {

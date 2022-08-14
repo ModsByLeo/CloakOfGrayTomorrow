@@ -1,4 +1,4 @@
-package adudecalledleo.graytomorrow.client.compat;
+package adudecalledleo.graytomorrow.compat.client;
 
 import adudecalledleo.graytomorrow.CloakItem;
 import adudecalledleo.graytomorrow.GrayTomorrow;
