@@ -20,8 +20,11 @@
 		"entrypoints": {
 			"init": "adudecalledleo.graytomorrow.GrayTomorrow",
 			"cardinal-components": "adudecalledleo.graytomorrow.GrayTomorrowComponents",
-			"client_init": "adudecalledleo.graytomorrow.client.GrayTomorrowClient",
-			"client_events": "adudecalledleo.graytomorrow.client.GrayTomorrowClient"
+			"client_init": "adudecalledleo.graytomorrow.client.GrayTomorrowClient::INSTANCE",
+			"client_events": [
+				"adudecalledleo.graytomorrow.client.GrayTomorrowClient::INSTANCE",
+				"adudecalledleo.graytomorrow.client.CloakRenderer::INSTANCE"
+			]
 		},
 		"depends": [
 			{
