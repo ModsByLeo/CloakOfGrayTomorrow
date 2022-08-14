@@ -19,7 +19,7 @@
 		"intermediate_mappings": "net.fabricmc:intermediary",
 		"entrypoints": {
 			"init": "adudecalledleo.graytomorrow.CloakOfGrayTomorrow",
-			"cardinal-components": "adudecalledleo.graytomorrow.CloakOfGrayTomorrow",
+			"cardinal-components": "adudecalledleo.graytomorrow.CloakComponents",
 			"client_init": "adudecalledleo.graytomorrow.client.CloakOfGrayTomorrowClient",
 			"client_events": "adudecalledleo.graytomorrow.client.CloakOfGrayTomorrowClient"
 		},
@@ -52,6 +52,6 @@
 	},
 	"mixin": "cloak_of_gray_tomorrow.mixins.json",
 	"cardinal-components": [
-		"cloak_of_gray_tomorrow:cloak_hood"
+		"cloak_of_gray_tomorrow:hood_up"
 	]
 }

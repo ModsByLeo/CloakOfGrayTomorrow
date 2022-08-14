@@ -1,9 +1,6 @@
 package adudecalledleo.graytomorrow;
 
 import adudecalledleo.graytomorrow.compat.EarsCompat;
-import dev.onyxstudios.cca.api.v3.entity.EntityComponentFactoryRegistry;
-import dev.onyxstudios.cca.api.v3.entity.EntityComponentInitializer;
-import dev.onyxstudios.cca.api.v3.entity.RespawnCopyStrategy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,7 +11,7 @@ import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.loader.api.QuiltLoader;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
 
-public final class CloakOfGrayTomorrow implements ModInitializer, EntityComponentInitializer {
+public final class CloakOfGrayTomorrow implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger("Cloak of Gray Tomorrow");
 
 	public static final String NAMESPACE = "cloak_of_gray_tomorrow";
@@ -39,10 +36,5 @@ public final class CloakOfGrayTomorrow implements ModInitializer, EntityComponen
 		if (QuiltLoader.isModLoaded("ears")) {
 			EarsCompat.init();
 		}
-	}
-
-	@Override
-	public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry) {
-		registry.registerForPlayers(CloakHoodComponent.KEY, CloakHoodComponent::new, RespawnCopyStrategy.LOSSLESS_ONLY);
 	}
 }

@@ -23,7 +23,7 @@ public final class CloakNetworking {
 			ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
 		server.execute(() -> {
 			if (CloakItem.isEquipped(player)) {
-				if (CloakHoodComponent.KEY.get(player).toggleHoodUp()) {
+				if (CloakComponents.HOOD_UP.get(player).toggleValue()) {
 					player.sendMessage(
 							Text.translatable("message." + CloakOfGrayTomorrow.NAMESPACE + ".hood_up"),
 							true);
@@ -36,6 +36,7 @@ public final class CloakNetworking {
 						CloakStatusEffects.removeChameleonAndApplyTrueBlindness(player);
 					}
 				}
+				CloakComponents.HOOD_UP.sync(player);
 			}
 		});
 	}

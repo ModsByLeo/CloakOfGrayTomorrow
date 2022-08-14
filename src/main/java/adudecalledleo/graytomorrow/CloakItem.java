@@ -30,7 +30,7 @@ public final class CloakItem extends TrinketItem {
 
 	public static CloakState getState(LivingEntity entity) {
 		if (isEquipped(entity)) {
-			return CloakHoodComponent.KEY.maybeGet(entity).map(CloakHoodComponent::isHoodUp).orElse(false)
+			return CloakComponents.HOOD_UP.maybeGet(entity).map(BooleanComponent::getValue).orElse(false)
 					? CloakState.HOOD_UP : CloakState.HOOD_DOWN;
 		} else {
 			return CloakState.NOT_EQUIPPED;
@@ -52,6 +52,7 @@ public final class CloakItem extends TrinketItem {
 
 	@Override
 	public void onEquip(ItemStack stack, SlotReference slot, LivingEntity entity) {
-		CloakHoodComponent.KEY.get(entity).setHoodUp(false);
+		CloakComponents.HOOD_UP.get(entity).setValue(false);
+		CloakComponents.HOOD_UP.sync(entity);
 	}
 }
