@@ -15,7 +15,7 @@ import net.minecraft.entity.LivingEntity;
 public abstract class ArmorFeatureRendererMixin {
 	@Inject(method = "render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;ILnet/minecraft/entity/LivingEntity;FFFFFF)V",
 			at = @At("HEAD"), cancellable = true)
-	private void imNotNakedMyClothesAreJustInvisible(MatrixStack matrices,
+	private void graytomorrow$skipRenderingIfArmorInvisible(MatrixStack matrices,
 			VertexConsumerProvider vertexConsumers, int i, LivingEntity entity, float f, float g, float h, float j,
 			float k, float l, CallbackInfo ci) {
 		if (GrayTomorrowComponents.get(GrayTomorrowComponents.ARMOR_INVISIBLE, entity)) {

@@ -29,7 +29,7 @@ public abstract class GameRendererMixin {
 					target = "Lnet/minecraft/util/profiler/Profiler;swap(Ljava/lang/String;)V",
 					ordinal = 1,
 					shift = At.Shift.AFTER))
-	private void lookAtMyInvisibleHands(float tickDelta, long limitTime, MatrixStack matrix, CallbackInfo ci) {
+	private void graytomorrow$forceNoRenderHand(float tickDelta, long limitTime, MatrixStack matrix, CallbackInfo ci) {
 		this.savedRenderHand = this.renderHand;
 		if (this.camera.getFocusedEntity() instanceof LivingEntity living
 				&& living.hasStatusEffect(GrayTomorrowStatusEffects.TRUE_BLINDNESS)) {
@@ -38,7 +38,7 @@ public abstract class GameRendererMixin {
 	}
 
 	@Inject(method = "renderWorld", at = @At("TAIL"))
-	private void ohRight(float tickDelta, long limitTime, MatrixStack matrix, CallbackInfo ci) {
+	private void graytomorrow$restoreRenderHand(float tickDelta, long limitTime, MatrixStack matrix, CallbackInfo ci) {
 		this.renderHand = this.savedRenderHand;
 	}
 }

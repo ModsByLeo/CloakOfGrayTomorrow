@@ -15,7 +15,7 @@ import net.minecraft.item.MilkBucketItem;
 public abstract class MilkBucketItemMixin {
 	@Redirect(method = "finishUsing", at = @At(value = "INVOKE",
 			target = "Lnet/minecraft/entity/LivingEntity;clearStatusEffects()Z"))
-	private boolean clearSomeStatusEffects(LivingEntity instance) {
+	private boolean graytomorrow$excludeOurStatusEffects(LivingEntity instance) {
 		boolean removedAny = false;
 		Iterator<StatusEffectInstance> effectIt = instance.getStatusEffects().iterator();
 		while (effectIt.hasNext()) {

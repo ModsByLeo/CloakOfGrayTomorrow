@@ -15,7 +15,7 @@ import net.minecraft.entity.LivingEntity;
 public abstract class TrinketFeatureRendererMixin {
 	@Inject(method = "render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;ILnet/minecraft/entity/LivingEntity;FFFFFF)V",
 			at = @At("HEAD"), cancellable = true, remap = false)
-	private void sorryEmiButThisMustBeDone(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light,
+	private void graytomorrow$skipRenderingIfArmorInvisible(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light,
 			LivingEntity entity, float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw,
 			float headPitch, CallbackInfo ci) {
 		if (GrayTomorrowComponents.get(GrayTomorrowComponents.ARMOR_INVISIBLE, entity)) {

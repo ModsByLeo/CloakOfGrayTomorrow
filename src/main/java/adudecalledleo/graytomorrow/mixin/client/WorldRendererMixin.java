@@ -21,7 +21,7 @@ public abstract class WorldRendererMixin {
 					target = "Lcom/mojang/blaze3d/systems/RenderSystem;clear(IZ)V", remap = false,
 					shift = At.Shift.AFTER),
 			cancellable = true)
-	private void actuallyDoNotRender(MatrixStack matrices, float tickDelta, long limitTime, boolean renderBlockOutline,
+	private void graytomorrow$skipRenderingIfTrulyBlind(MatrixStack matrices, float tickDelta, long limitTime, boolean renderBlockOutline,
 			Camera camera, GameRenderer gameRenderer, LightmapTextureManager lightmapTextureManager,
 			Matrix4f projectionMatrix, CallbackInfo ci) {
 		if (camera.getFocusedEntity() instanceof LivingEntity living

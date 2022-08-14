@@ -26,7 +26,7 @@ public abstract class BackgroundRendererMixin {
 	private static long lastWaterFogColorUpdateTime;
 
 	@Inject(method = "render", at = @At("HEAD"), cancellable = true)
-	private static void blindPeopleSeeBlackProbably(Camera camera, float tickDelta, ClientWorld world, int viewDistance,
+	private static void graytomorrow$clearBlackIfTrulyBlind(Camera camera, float tickDelta, ClientWorld world, int viewDistance,
 			float skyDarkness, CallbackInfo ci) {
 		if (camera.getFocusedEntity() instanceof LivingEntity living
 				&& living.hasStatusEffect(GrayTomorrowStatusEffects.TRUE_BLINDNESS)) {

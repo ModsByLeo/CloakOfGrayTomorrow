@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 @Mixin(ServerPlayerInteractionManager.class)
 public abstract class ServerPlayerInteractionManagerMixin {
 	@Inject(method = "interactBlock", at = @At("HEAD"), cancellable = true)
-	private void blockThatBlock(ServerPlayerEntity player, World world, ItemStack stack, Hand hand,
+	private void graytomorrow$preventInteractIfTrulyBlind(ServerPlayerEntity player, World world, ItemStack stack, Hand hand,
 			BlockHitResult hitResult, CallbackInfoReturnable<ActionResult> cir) {
 		if (player.hasStatusEffect(GrayTomorrowStatusEffects.TRUE_BLINDNESS)) {
 			player.sendMessage(
@@ -29,7 +29,7 @@ public abstract class ServerPlayerInteractionManagerMixin {
 	}
 
 	@Inject(method = "interactItem", at = @At("HEAD"), cancellable = true)
-	private void blockThatItem(ServerPlayerEntity player, World world, ItemStack stack, Hand hand,
+	private void graytomorrow$preventInteractIfTrulyBlind(ServerPlayerEntity player, World world, ItemStack stack, Hand hand,
 			CallbackInfoReturnable<ActionResult> cir) {
 		if (player.hasStatusEffect(GrayTomorrowStatusEffects.TRUE_BLINDNESS)) {
 			player.sendMessage(

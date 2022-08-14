@@ -23,14 +23,14 @@ public abstract class LivingEntityMixin {
 	@Inject(method = "updatePotionVisibility",
 			at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;setInvisible(Z)V",
 					ordinal = 0, shift = At.Shift.AFTER))
-	private void resetArmorVisibility(CallbackInfo ci) {
+	private void graytomorrow$resetArmorVisibility(CallbackInfo ci) {
 		GrayTomorrowComponents.ARMOR_INVISIBLE.get(this).setValue(false);
 	}
 
 	@Redirect(method = "updatePotionVisibility",
 			at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;setInvisible(Z)V",
 					ordinal = 1))
-	private void updateArmorVisibility(LivingEntity instance, boolean hasInvisibility) {
+	private void graytomorrow$updateArmorVisibility(LivingEntity instance, boolean hasInvisibility) {
 		boolean hasChameleon = instance.hasStatusEffect(GrayTomorrowStatusEffects.CHAMELEON);
 		instance.setInvisible(hasInvisibility || hasChameleon);
 		GrayTomorrowComponents.ARMOR_INVISIBLE.get(this).setValue(hasChameleon);
@@ -38,7 +38,7 @@ public abstract class LivingEntityMixin {
 	}
 
 	@Inject(method = "getArmorVisibility", at = @At("HEAD"), cancellable = true)
-	private void forceNoArmorVisibility(CallbackInfoReturnable<Float> cir) {
+	private void graytomorrow$forceNoArmorVisibility(CallbackInfoReturnable<Float> cir) {
 		if (GrayTomorrowComponents.get(GrayTomorrowComponents.ARMOR_INVISIBLE, this)) {
 			cir.setReturnValue(0.0F);
 		}
@@ -50,7 +50,7 @@ public abstract class LivingEntityMixin {
 
 	@Inject(method = "hasStatusEffect",
 			at = @At("HEAD"), cancellable = true)
-	private void checkTrueBlindness(StatusEffect effect, CallbackInfoReturnable<Boolean> cir) {
+	private void graytomorrow$checkTrueBlindness(StatusEffect effect, CallbackInfoReturnable<Boolean> cir) {
 		if (effect == StatusEffects.BLINDNESS) {
 			cir.setReturnValue(this.activeStatusEffects.containsKey(GrayTomorrowStatusEffects.TRUE_BLINDNESS)
 					|| this.activeStatusEffects.containsKey(StatusEffects.BLINDNESS));
