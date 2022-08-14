@@ -52,6 +52,7 @@
 	},
 	"mixin": "cloak_of_gray_tomorrow.mixins.json",
 	"cardinal-components": [
+		"cloak_of_gray_tomorrow:armor_invisible",
 		"cloak_of_gray_tomorrow:hood_up"
 	]
 }

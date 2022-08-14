@@ -30,8 +30,7 @@ public final class CloakItem extends TrinketItem {
 
 	public static CloakState getState(LivingEntity entity) {
 		if (isEquipped(entity)) {
-			return CloakComponents.HOOD_UP.maybeGet(entity).map(BooleanComponent::getValue).orElse(false)
-					? CloakState.HOOD_UP : CloakState.HOOD_DOWN;
+			return CloakComponents.get(CloakComponents.HOOD_UP, entity) ? CloakState.HOOD_UP : CloakState.HOOD_DOWN;
 		} else {
 			return CloakState.NOT_EQUIPPED;
 		}

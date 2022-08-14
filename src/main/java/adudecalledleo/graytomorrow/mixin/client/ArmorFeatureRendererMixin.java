@@ -1,6 +1,6 @@
 package adudecalledleo.graytomorrow.mixin.client;
 
-import adudecalledleo.graytomorrow.duck.LivingEntityExtensions;
+import adudecalledleo.graytomorrow.CloakComponents;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -18,7 +18,7 @@ public abstract class ArmorFeatureRendererMixin {
 	private void imNotNakedMyClothesAreJustInvisible(MatrixStack matrices,
 			VertexConsumerProvider vertexConsumers, int i, LivingEntity entity, float f, float g, float h, float j,
 			float k, float l, CallbackInfo ci) {
-		if (((LivingEntityExtensions) entity).graytomorrow$isArmorInvisible()) {
+		if (CloakComponents.get(CloakComponents.ARMOR_INVISIBLE, entity)) {
 			ci.cancel();
 		}
 	}
