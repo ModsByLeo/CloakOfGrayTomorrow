@@ -1,4 +1,4 @@
-package adudecalledleo.graytomorrow.mixin;
+package adudecalledleo.graytomorrow.mixin.client;
 
 import adudecalledleo.graytomorrow.GrayTomorrowComponents;
 import dev.emi.trinkets.TrinketFeatureRenderer;
