@@ -9,6 +9,7 @@
     "ServerPlayerInteractionManagerMixin"
   ],
   "client": [
+    "TrinketFeatureRendererMixin",
     "client.ArmorFeatureRendererMixin",
     "client.BackgroundRendererMixin",
     "client.GameRendererMixin",
