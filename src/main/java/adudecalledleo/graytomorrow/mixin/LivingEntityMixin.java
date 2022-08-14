@@ -34,6 +34,7 @@ public abstract class LivingEntityMixin {
 		boolean hasChameleon = instance.hasStatusEffect(GrayTomorrowStatusEffects.CHAMELEON);
 		instance.setInvisible(hasInvisibility || hasChameleon);
 		GrayTomorrowComponents.ARMOR_INVISIBLE.get(this).setValue(hasChameleon);
+		GrayTomorrowComponents.ARMOR_INVISIBLE.sync(this);
 	}
 
 	@Inject(method = "getArmorVisibility", at = @At("HEAD"), cancellable = true)
