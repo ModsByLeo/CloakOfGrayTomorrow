@@ -1,12 +1,15 @@
-package adudecalledleo.graytomorrow.compat;
+package adudecalledleo.graytomorrow.client.compat;
 
 import adudecalledleo.graytomorrow.CloakItem;
 import adudecalledleo.graytomorrow.GrayTomorrow;
 import com.unascribed.ears.api.EarsFeatureType;
 import com.unascribed.ears.api.registry.EarsInhibitorRegistry;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 
 import net.minecraft.entity.player.PlayerEntity;
 
+@Environment(EnvType.CLIENT)
 public final class GrayTomorrowEarsCompat {
 	private GrayTomorrowEarsCompat() {}
 

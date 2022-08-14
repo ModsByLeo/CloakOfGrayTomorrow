@@ -2,6 +2,7 @@ package adudecalledleo.graytomorrow.client;
 
 import adudecalledleo.graytomorrow.GrayTomorrow;
 import adudecalledleo.graytomorrow.GrayTomorrowNetworking;
+import adudecalledleo.graytomorrow.client.compat.GrayTomorrowEarsCompat;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
@@ -12,6 +13,7 @@ import net.minecraft.client.option.KeyBind;
 import net.minecraft.client.world.ClientWorld;
 
 import org.quiltmc.loader.api.ModContainer;
+import org.quiltmc.loader.api.QuiltLoader;
 import org.quiltmc.qsl.base.api.entrypoint.client.ClientModInitializer;
 import org.quiltmc.qsl.lifecycle.api.client.event.ClientWorldTickEvents;
 import org.quiltmc.qsl.networking.api.PacketByteBufs;
@@ -25,6 +27,10 @@ public final class GrayTomorrowClient implements ClientModInitializer, ClientWor
 	@Override
 	public void onInitializeClient(ModContainer mod) {
 		KeyBindingHelper.registerKeyBinding(keyToggleHood);
+
+		if (QuiltLoader.isModLoaded("ears")) {
+			GrayTomorrowEarsCompat.init();
+		}
 	}
 
 	@Override

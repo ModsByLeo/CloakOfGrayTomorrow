@@ -1,6 +1,5 @@
 package adudecalledleo.graytomorrow;
 
-import adudecalledleo.graytomorrow.compat.GrayTomorrowEarsCompat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -8,7 +7,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 import org.quiltmc.loader.api.ModContainer;
-import org.quiltmc.loader.api.QuiltLoader;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
 
 public final class GrayTomorrow implements ModInitializer {
@@ -32,9 +30,5 @@ public final class GrayTomorrow implements ModInitializer {
 		Registry.register(Registry.STATUS_EFFECT, id("true_blindness"), GrayTomorrowStatusEffects.TRUE_BLINDNESS);
 
 		GrayTomorrowNetworking.register();
-
-		if (QuiltLoader.isModLoaded("ears")) {
-			GrayTomorrowEarsCompat.init();
-		}
 	}
 }
