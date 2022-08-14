@@ -14,7 +14,7 @@ import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
 public final class GrayTomorrow implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger("Cloak of Gray Tomorrow");
 
-	public static final String NAMESPACE = "cloak_of_gray_tomorrow";
+	public static final String NAMESPACE = "graytomorrow";
 
 	public static Identifier id(String path) {
 		return new Identifier(NAMESPACE, path);

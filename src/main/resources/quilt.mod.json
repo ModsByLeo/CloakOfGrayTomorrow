@@ -2,7 +2,7 @@
 	"schema_version": 1,
 	"quilt_loader": {
 		"group": "adudecalledleo.mcmods.quilt",
-		"id": "cloak_of_gray_tomorrow",
+		"id": "graytomorrow",
 		"version": "${version}",
 		"metadata": {
 			"name": "Cloak of Gray Tomorrow",
@@ -14,7 +14,7 @@
 				"issues": "https://github.com/ModsByLeo/CloakOfGrayTomorrow/issues",
 				"sources": "https://github.com/ModsByLeo/CloakOfGrayTomorrow"
 			},
-			"icon": "assets/cloak_of_gray_tomorrow/icon.png"
+			"icon": "assets/graytomorrow/icon.png"
 		},
 		"intermediate_mappings": "net.fabricmc:intermediary",
 		"entrypoints": {
@@ -53,9 +53,9 @@
 			}
 		]
 	},
-	"mixin": "cloak_of_gray_tomorrow.mixins.json",
+	"mixin": "graytomorrow.mixins.json",
 	"cardinal-components": [
-		"cloak_of_gray_tomorrow:armor_invisible",
-		"cloak_of_gray_tomorrow:hood_up"
+		"graytomorrow:armor_invisible",
+		"graytomorrow:hood_up"
 	]
 }

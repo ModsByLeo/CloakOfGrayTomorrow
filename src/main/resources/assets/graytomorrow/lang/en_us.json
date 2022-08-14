@@ -1,0 +1,15 @@
+{
+  "item.graytomorrow.cloak": "Cloak of Gray Tomorrow",
+  "item.graytomorrow.cloak.tooltip[0]": "Become fully invisible, including armor!",
+  "item.graytomorrow.cloak.tooltip[1]": "Lasts for 1 minute, or until deactivated",
+  "item.graytomorrow.cloak.tooltip[2]": "When deactivated, become fully blind for",
+  "item.graytomorrow.cloak.tooltip[3]": "however long you were invisible for",
+  "item.graytomorrow.cloak.tooltip[4]": "Toggle (hood) by pressing %s",
+  "effect.graytomorrow.chameleon": "Chameleon",
+  "effect.graytomorrow.true_blindness": "True Blindness",
+  "key.graytomorrow.toggleHood": "Toggle Cloak Hood",
+  "message.graytomorrow.hood_up": "You put on your Cloak of Gray Tomorrow's hood!",
+  "message.graytomorrow.hood_down": "You removed your Cloak of Gray Tomorrow's hood.",
+  "message.graytomorrow.no_block": "You can't use blocks, you're blind!",
+  "message.graytomorrow.no_item": "You can't use items, you're blind!"
+}
