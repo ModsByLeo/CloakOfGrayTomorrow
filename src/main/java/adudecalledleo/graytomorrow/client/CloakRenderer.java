@@ -36,7 +36,7 @@ public final class CloakRenderer implements ClientResourceLoaderEvents.EndResour
 			@Nullable Throwable error) {
 		if (error == null) {
 			var entityModelLoader = client.getEntityModelLoader();
-			this.model = new BipedEntityModel<>(entityModelLoader.getModelPart(EntityModelLayers.PLAYER_OUTER_ARMOR));
+			this.model = new BipedEntityModel<>(entityModelLoader.getModelPart(EntityModelLayers.PLAYER_INNER_ARMOR));
 		}
 	}
 
@@ -56,12 +56,7 @@ public final class CloakRenderer implements ClientResourceLoaderEvents.EndResour
 			MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, LivingEntity entity) {
 		contextModel.setAttributes(armorModel);
 
-		armorModel.setVisible(false);
-		armorModel.head.visible = true;
-		armorModel.hat.visible = true;
-		armorModel.body.visible = true;
-		armorModel.rightArm.visible = true;
-		armorModel.leftArm.visible = true;
+		armorModel.setVisible(true);
 
 		var buffer = vertexConsumers.getBuffer(RenderLayer.getArmorCutoutNoCull(
 				GrayTomorrowComponents.get(GrayTomorrowComponents.HOOD_UP, entity)
