@@ -16,7 +16,7 @@ public final class GrayTomorrowStatusEffects {
 
 	public static final Set<StatusEffect> ALL = Set.of(CHAMELEON, TRUE_BLINDNESS);
 
-	public static final int CHAMELEON_LENGTH = 20 * 60; // 1 minute
+	public static final int CHAMELEON_LENGTH = 20 * 30; // 30 seconds
 
 	private GrayTomorrowStatusEffects() {}
 
