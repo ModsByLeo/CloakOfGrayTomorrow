@@ -68,17 +68,17 @@ if (Boolean.valueOf(project.use_runtime_deps)) {
 				includeGroupByRegex "maven\\.modrinth"
 			}
 		}
-		maven {
-			name = "Gegy's Maven"
-			url = "https://maven.gegy.dev/"
-		}
 	}
 
 	dependencies {
 		// DataBreaker applies a number of patches to eliminate the loading of data fixers
 		// This greatly reduces the amount of time needed to start the game, but is generally unsafe in production
-		modRuntimeOnly "supercoder79:databreaker:${project.databreaker_version}"
+		// NOTE crashes because of QSL's DFU module (oops!)
+		//modRuntimeOnly "supercoder79:databreaker:${project.databreaker_version}"
+		// LazyDFU as an alternative to DataBreaker
+		modRuntimeOnly "maven.modrinth:lazydfu:${project.lazydfu_version}"
 		// JellySquid's elemental optimizations (and Starlight)
+		// NOTE incompatible with 1.19.2
 		//modRuntimeOnly "maven.modrinth:lithium:${project.lithium_version}"
 		//modRuntimeOnly "maven.modrinth:starlight:${project.starlight_version}"
 		//modRuntimeOnly "maven.modrinth:sodium:${project.sodium_version}"
