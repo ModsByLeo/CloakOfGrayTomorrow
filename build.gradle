@@ -44,9 +44,19 @@ dependencies {
 	// If you want to use QSL by itself over Quilted Fabric API, uncomment the line below (and comment out the line above):
 	// 	modImplementation "org.quiltmc:qsl:${qsl_version}+${minecraft_version}"
 
-	modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-base:${cca_version}"
-	modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${cca_version}"
-	modImplementation("dev.emi:trinkets:${trinkets_version}") {
+	include modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${cca_version}") {
+		exclude group: "net.fabricmc", module: "fabric-loader"
+		exclude group: "net.fabricmc.fabric-api"
+		exclude group: "com.terraformersmc", module: "modmenu"
+	}
+	include modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${cca_version}") {
+		exclude group: "net.fabricmc", module: "fabric-loader"
+		exclude group: "net.fabricmc.fabric-api"
+		exclude group: "com.terraformersmc", module: "modmenu"
+	}
+	include modImplementation("dev.emi:trinkets:${trinkets_version}") {
+		exclude group: "net.fabricmc", module: "fabric-loader"
+		exclude group: "net.fabricmc.fabric-api"
 		exclude group: "com.terraformersmc", module: "modmenu"
 	}
 	compileOnly "com.unascribed:ears-api:${ears_api_version}"
