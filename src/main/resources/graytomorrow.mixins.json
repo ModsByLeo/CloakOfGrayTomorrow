@@ -12,8 +12,11 @@
     "client.ArmorFeatureRendererMixin",
     "client.BackgroundRendererMixin",
     "client.GameRendererMixin",
+    "client.HeadFeatureRendererMixin",
     "client.HeldItemFeatureRendererMixin",
-    "client.TrinketFeatureRendererMixin",
+    "client.LivingEntityRendererMixin",
+    "client.StuckObjectsFeatureRendererMixin",
+    "client.TridentRiptideFeatureRendererMixin",
     "client.WorldRendererMixin"
   ],
   "injectors": {
