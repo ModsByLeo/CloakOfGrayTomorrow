@@ -34,9 +34,7 @@ public final class GrayTomorrowNetworking {
 					player.sendMessage(
 							Text.translatable("message." + GrayTomorrow.NAMESPACE + ".hood_down"),
 							true);
-					if (player.hasStatusEffect(GrayTomorrowStatusEffects.CHAMELEON)) {
-						GrayTomorrowStatusEffects.removeChameleonAndApplyTrueBlindness(player);
-					}
+					GrayTomorrowStatusEffects.removeChameleonAndApplyTrueBlindness(player);
 				}
 			}
 		});

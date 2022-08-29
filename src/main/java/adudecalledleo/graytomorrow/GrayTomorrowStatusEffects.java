@@ -8,11 +8,11 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffectType;
+import net.minecraft.entity.effect.StatusEffects;
 
 public final class GrayTomorrowStatusEffects {
-	// TODO colors
-	public static final StatusEffect CHAMELEON = new ChameleonStatusEffect(StatusEffectType.BENEFICIAL, 0xFFFFFF);
-	public static final StatusEffect TRUE_BLINDNESS = new StatusEffect(StatusEffectType.HARMFUL, 0x00000) {};
+	public static final StatusEffect CHAMELEON = new ChameleonStatusEffect(StatusEffectType.BENEFICIAL, StatusEffects.INVISIBILITY.getColor());
+	public static final StatusEffect TRUE_BLINDNESS = new StatusEffect(StatusEffectType.HARMFUL, StatusEffects.BLINDNESS.getColor()) {};
 
 	public static final Set<StatusEffect> ALL = Set.of(CHAMELEON, TRUE_BLINDNESS);
 
@@ -22,23 +22,31 @@ public final class GrayTomorrowStatusEffects {
 
 	public static boolean applyChameleon(LivingEntity entity) {
 		if (!entity.hasStatusEffect(TRUE_BLINDNESS)) {
-			entity.addStatusEffect(new StatusEffectInstance(CHAMELEON,
+			return entity.addStatusEffect(new StatusEffectInstance(CHAMELEON,
 					CHAMELEON_LENGTH, 0, false, false, true));
-			return true;
 		}
 		return false;
 	}
 
-	public static StatusEffectInstance createTrueBlindness(@Nullable StatusEffectInstance chameleonInstance) {
+	public static StatusEffectInstance createTrueBlindness(@Nullable StatusEffectInstance chameleonEffect) {
 		int duration = CHAMELEON_LENGTH;
-		if (chameleonInstance != null) {
-			duration -= chameleonInstance.getDuration();
+		if (chameleonEffect != null) {
+			duration -= chameleonEffect.getDuration();
 		}
 		return new StatusEffectInstance(TRUE_BLINDNESS, duration, 0, false, false, true);
 	}
 
-	public static void removeChameleonAndApplyTrueBlindness(LivingEntity entity) {
-		entity.addStatusEffect(createTrueBlindness(entity.getStatusEffect(CHAMELEON)));
-		entity.removeStatusEffect(CHAMELEON);
+	public static boolean removeChameleonAndApplyTrueBlindness(LivingEntity entity) {
+		var chameleonEffect = entity.getStatusEffect(CHAMELEON);
+		if (chameleonEffect == null) {
+			return false;
+		}
+
+		if (entity.addStatusEffect(createTrueBlindness(entity.getStatusEffect(CHAMELEON)))) {
+			entity.removeStatusEffect(CHAMELEON);
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
