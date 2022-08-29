@@ -4,6 +4,7 @@
   "package": "adudecalledleo.graytomorrow.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "LivingEntityAccessor",
     "LivingEntityMixin",
     "MilkBucketItemMixin",
     "ServerPlayerInteractionManagerMixin"

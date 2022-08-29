@@ -16,16 +16,21 @@ public abstract class MilkBucketItemMixin {
 	@Redirect(method = "finishUsing", at = @At(value = "INVOKE",
 			target = "Lnet/minecraft/entity/LivingEntity;clearStatusEffects()Z"))
 	private boolean graytomorrow$excludeOurStatusEffects(LivingEntity instance) {
-		boolean removedAny = false;
-		Iterator<StatusEffectInstance> effectIt = instance.getStatusEffects().iterator();
-		while (effectIt.hasNext()) {
-			var effect = effectIt.next();
-			if (!GrayTomorrowStatusEffects.ALL.contains(effect.getEffectType())) {
-				effect.getEffectType().onRemoved(instance, instance.getAttributes(), effect.getAmplifier());
-				effectIt.remove();
-				removedAny = true;
+		if (instance.world.isClient) {
+			return false;
+		} else {
+			boolean removedAny = false;
+			var access = (LivingEntityAccessor) instance;
+			Iterator<StatusEffectInstance> effectIt = access.getActiveStatusEffects().values().iterator();
+			while (effectIt.hasNext()) {
+				var effect = effectIt.next();
+				if (!GrayTomorrowStatusEffects.ALL.contains(effect.getEffectType())) {
+					access.callOnStatusEffectRemoved(effect);
+					effectIt.remove();
+					removedAny = true;
+				}
 			}
+			return removedAny;
 		}
-		return removedAny;
 	}
 }
