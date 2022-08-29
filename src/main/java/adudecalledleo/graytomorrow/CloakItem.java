@@ -2,6 +2,7 @@ package adudecalledleo.graytomorrow;
 
 import java.util.List;
 
+import adudecalledleo.graytomorrow.util.BooleanComponent;
 import dev.emi.trinkets.api.SlotReference;
 import dev.emi.trinkets.api.TrinketItem;
 import dev.emi.trinkets.api.TrinketsApi;
@@ -26,7 +27,7 @@ public final class CloakItem extends TrinketItem {
 
 	public static CloakState getState(LivingEntity entity) {
 		if (isEquipped(entity)) {
-			return GrayTomorrowComponents.get(GrayTomorrowComponents.HOOD_UP, entity) ? CloakState.HOOD_UP : CloakState.HOOD_DOWN;
+			return BooleanComponent.get(GrayTomorrowComponents.HOOD_UP, entity) ? CloakState.HOOD_UP : CloakState.HOOD_DOWN;
 		} else {
 			return CloakState.NOT_EQUIPPED;
 		}
@@ -47,7 +48,6 @@ public final class CloakItem extends TrinketItem {
 
 	@Override
 	public void onEquip(ItemStack stack, SlotReference slot, LivingEntity entity) {
-		GrayTomorrowComponents.HOOD_UP.get(entity).setValue(false);
-		GrayTomorrowComponents.HOOD_UP.sync(entity);
+		BooleanComponent.set(GrayTomorrowComponents.HOOD_UP, entity, false);
 	}
 }

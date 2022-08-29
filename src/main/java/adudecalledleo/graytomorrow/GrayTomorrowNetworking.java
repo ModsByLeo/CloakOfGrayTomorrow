@@ -1,5 +1,7 @@
 package adudecalledleo.graytomorrow;
 
+import adudecalledleo.graytomorrow.util.BooleanComponent;
+
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
@@ -23,7 +25,7 @@ public final class GrayTomorrowNetworking {
 			ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
 		server.execute(() -> {
 			if (CloakItem.isEquipped(player)) {
-				if (GrayTomorrowComponents.HOOD_UP.get(player).toggleValue()) {
+				if (BooleanComponent.toggle(GrayTomorrowComponents.HOOD_UP, player)) {
 					player.sendMessage(
 							Text.translatable("message." + GrayTomorrow.NAMESPACE + ".hood_up"),
 							true);
@@ -36,7 +38,6 @@ public final class GrayTomorrowNetworking {
 						GrayTomorrowStatusEffects.removeChameleonAndApplyTrueBlindness(player);
 					}
 				}
-				GrayTomorrowComponents.HOOD_UP.sync(player);
 			}
 		});
 	}

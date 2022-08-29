@@ -1,5 +1,6 @@
 package adudecalledleo.graytomorrow;
 
+import adudecalledleo.graytomorrow.util.BooleanComponent;
 import dev.onyxstudios.cca.api.v3.component.ComponentKey;
 import dev.onyxstudios.cca.api.v3.component.ComponentRegistry;
 import dev.onyxstudios.cca.api.v3.entity.EntityComponentFactoryRegistry;
@@ -13,10 +14,6 @@ public final class GrayTomorrowComponents implements EntityComponentInitializer 
 			ComponentRegistry.getOrCreate(GrayTomorrow.id("equipment_invisible"), BooleanComponent.class);
 	public static final ComponentKey<BooleanComponent> HOOD_UP =
 			ComponentRegistry.getOrCreate(GrayTomorrow.id("hood_up"), BooleanComponent.class);
-
-	public static boolean get(ComponentKey<BooleanComponent> key, Object provider) {
-		return key.maybeGet(provider).map(BooleanComponent::getValue).orElse(false);
-	}
 
 	@Override
 	public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry) {

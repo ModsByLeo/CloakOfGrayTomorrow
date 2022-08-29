@@ -2,6 +2,7 @@ package adudecalledleo.graytomorrow.client;
 
 import adudecalledleo.graytomorrow.GrayTomorrow;
 import adudecalledleo.graytomorrow.GrayTomorrowComponents;
+import adudecalledleo.graytomorrow.util.BooleanComponent;
 import dev.emi.trinkets.api.SlotReference;
 import dev.emi.trinkets.api.client.TrinketRenderer;
 import org.jetbrains.annotations.Nullable;
@@ -59,7 +60,7 @@ public final class CloakRenderer implements ClientResourceLoaderEvents.EndResour
 		armorModel.setVisible(true);
 
 		var buffer = vertexConsumers.getBuffer(RenderLayer.getArmorCutoutNoCull(
-				GrayTomorrowComponents.get(GrayTomorrowComponents.HOOD_UP, entity)
+				BooleanComponent.get(GrayTomorrowComponents.HOOD_UP, entity)
 						? TEXTURE_HOOD_UP
 						: TEXTURE));
 

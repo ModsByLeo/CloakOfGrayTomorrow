@@ -1,6 +1,7 @@
 package adudecalledleo.graytomorrow.client;
 
 import adudecalledleo.graytomorrow.GrayTomorrowComponents;
+import adudecalledleo.graytomorrow.util.BooleanComponent;
 import dev.emi.trinkets.TrinketFeatureRenderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -21,7 +22,7 @@ public final class ReplacementTrinketFeatureRenderer<T extends LivingEntity, M e
 	public void render(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, T entity,
 			float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw,
 			float headPitch) {
-		if (GrayTomorrowComponents.get(GrayTomorrowComponents.EQUIPMENT_INVISIBLE, entity)) {
+		if (BooleanComponent.get(GrayTomorrowComponents.EQUIPMENT_INVISIBLE, entity)) {
 			return;
 		}
 
