@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
 
 import org.quiltmc.loader.api.ModContainer;
@@ -20,7 +21,10 @@ public final class GrayTomorrow implements ModInitializer {
 		return new Identifier(NAMESPACE, path);
 	}
 
-	public static final CloakItem CLOAK_ITEM = new CloakItem(new Item.Settings().group(ItemGroup.COMBAT));
+	public static final CloakItem CLOAK_ITEM = new CloakItem(new Item.Settings()
+			.maxCount(1)
+			.rarity(Rarity.RARE)
+			.group(ItemGroup.COMBAT));
 
 	public static final String KEY_TOGGLE_HOOD_ID = "key." + NAMESPACE + ".toggleHood";
 
