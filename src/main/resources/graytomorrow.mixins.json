@@ -12,6 +12,7 @@
   "client": [
     "client.ArmorFeatureRendererMixin",
     "client.BackgroundRendererMixin",
+    "client.ElytraFeatureRendererMixin",
     "client.GameRendererMixin",
     "client.HeadFeatureRendererMixin",
     "client.HeldItemFeatureRendererMixin",
