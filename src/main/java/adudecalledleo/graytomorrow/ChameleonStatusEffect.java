@@ -5,7 +5,7 @@ import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectType;
 
-public class ChameleonStatusEffect extends StatusEffect {
+public final class ChameleonStatusEffect extends StatusEffect {
 	public ChameleonStatusEffect(StatusEffectType type, int color) {
 		super(type, color);
 	}
