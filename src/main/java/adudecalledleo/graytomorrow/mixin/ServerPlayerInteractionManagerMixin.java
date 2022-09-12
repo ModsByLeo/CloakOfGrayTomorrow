@@ -33,7 +33,7 @@ public abstract class ServerPlayerInteractionManagerMixin {
 			CallbackInfoReturnable<ActionResult> cir) {
 		if (player.hasStatusEffect(GrayTomorrowStatusEffects.TRUE_BLINDNESS)) {
 			player.sendMessage(
-					Text.translatable("message." + GrayTomorrow.NAMESPACE + ".no_blocks"), true);
+					Text.translatable("message." + GrayTomorrow.NAMESPACE + ".no_items"), true);
 			cir.setReturnValue(ActionResult.FAIL);
 		}
 	}

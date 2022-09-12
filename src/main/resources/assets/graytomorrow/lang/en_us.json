@@ -10,6 +10,6 @@
   "key.graytomorrow.toggleHood": "Toggle Cloak Hood",
   "message.graytomorrow.hood_up": "You put on your Cloak of Gray Tomorrow's hood!",
   "message.graytomorrow.hood_down": "You removed your Cloak of Gray Tomorrow's hood.",
-  "message.graytomorrow.no_block": "You can't use blocks, you're blind!",
-  "message.graytomorrow.no_item": "You can't use items, you're blind!"
+  "message.graytomorrow.no_blocks": "You can't use blocks, you're blind!",
+  "message.graytomorrow.no_items": "You can't use items, you're blind!"
 }
