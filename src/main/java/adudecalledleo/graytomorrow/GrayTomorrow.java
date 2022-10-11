@@ -24,7 +24,7 @@ public final class GrayTomorrow implements ModInitializer {
 	public static final CloakItem CLOAK_ITEM = new CloakItem(new Item.Settings()
 			.maxCount(1)
 			.rarity(Rarity.RARE)
-			.group(ItemGroup.COMBAT));
+			.group(ItemGroup.TOOLS));
 
 	public static final String KEY_TOGGLE_HOOD_ID = "key." + NAMESPACE + ".toggleHood";
 
