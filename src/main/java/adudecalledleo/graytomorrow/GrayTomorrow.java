@@ -30,7 +30,7 @@ public final class GrayTomorrow implements ModInitializer {
 
 	@Override
 	public void onInitialize(ModContainer mod) {
-		LOGGER.info("2 YEARS");
+		LOGGER.info("[Cloak of Gray Tomorrow] 2 YEARS");
 
 		Registry.register(Registry.ITEM, id("cloak"), CLOAK_ITEM);
 

@@ -1,5 +1,6 @@
 package adudecalledleo.graytomorrow.mixin.client;
 
+import adudecalledleo.graytomorrow.client.GrayTomorrowClient;
 import adudecalledleo.graytomorrow.client.ReplacementTrinketFeatureRenderer;
 import dev.emi.trinkets.TrinketFeatureRenderer;
 import org.spongepowered.asm.mixin.Mixin;
@@ -16,6 +17,7 @@ public abstract class LivingEntityRendererMixin<T extends LivingEntity, M extend
 	@ModifyArg(method = "addFeature", at = @At(value = "INVOKE", target = "Ljava/util/List;add(Ljava/lang/Object;)Z"))
 	private Object graytomorrow$replaceTrinketFeatureRenderer(Object original) {
 		if (original.getClass() == TrinketFeatureRenderer.class) {
+			GrayTomorrowClient.LOGGER.warn("[Cloak of Gray Tomorrow|Client] Replacing the TrinketFeatureRenderer!!!");
 			return new ReplacementTrinketFeatureRenderer<>(this);
 		}
 		return original;

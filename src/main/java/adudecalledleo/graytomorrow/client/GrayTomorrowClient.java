@@ -29,13 +29,14 @@ public final class GrayTomorrowClient implements ClientModInitializer, ClientWor
 	public static final KeyBind keyToggleHood =
 			new KeyBind(GrayTomorrow.KEY_TOGGLE_HOOD_ID, GLFW.GLFW_KEY_V, KeyBind.GAMEPLAY_CATEGORY);
 
+	@SuppressWarnings("unused")
 	public static final GrayTomorrowClient INSTANCE = new GrayTomorrowClient();
 
 	private GrayTomorrowClient() {}
 
 	@Override
 	public void onInitializeClient(ModContainer mod) {
-		LOGGER.info("Again, I would like to emphasise: 2 YEARS");
+		LOGGER.info("[Cloak of Gray Tomorrow|Client] Again, I would like to emphasise: 2 YEARS");
 
 		KeyBindingHelper.registerKeyBinding(keyToggleHood);
 
