@@ -90,7 +90,7 @@ if (Boolean.valueOf(project.use_runtime_deps)) {
 		modRuntimeOnly "supercoder79:databreaker:${project.databreaker_version}"
 		// JellySquid's elemental optimizations (and Starlight)
 		modRuntimeOnly "maven.modrinth:lithium:${project.lithium_version}"
-		modRuntimeOnly "maven.modrinth:starlight:${project.starlight_version}"
+		modRuntimeOnly "maven.modrinth:phosphor:${project.phosphor_version}"
 		modRuntimeOnly "maven.modrinth:sodium:${project.sodium_version}"
 		runtimeOnly 'org.joml:joml:1.10.4' // needed for Sodium
 	}
