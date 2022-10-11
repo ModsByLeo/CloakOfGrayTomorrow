@@ -14,6 +14,8 @@ public final class GrayTomorrowComponents implements EntityComponentInitializer 
 			ComponentRegistry.getOrCreate(GrayTomorrow.id("equipment_invisible"), BooleanComponent.class);
 	public static final ComponentKey<BooleanComponent> HOOD_UP =
 			ComponentRegistry.getOrCreate(GrayTomorrow.id("hood_up"), BooleanComponent.class);
+	public static final ComponentKey<ChameleonStartingDurationComponent> CHAMELEON_STARTING_DURATION =
+			ComponentRegistry.getOrCreate(GrayTomorrow.id("chameleon_starting_duration"), ChameleonStartingDurationComponent.class);
 
 	@Override
 	public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry) {
@@ -23,5 +25,8 @@ public final class GrayTomorrowComponents implements EntityComponentInitializer 
 		registry.beginRegistration(LivingEntity.class, HOOD_UP)
 				.respawnStrategy(RespawnCopyStrategy.LOSSLESS_ONLY)
 				.end(entity -> new BooleanComponent(false));
+		registry.beginRegistration(LivingEntity.class, CHAMELEON_STARTING_DURATION)
+				.respawnStrategy(RespawnCopyStrategy.LOSSLESS_ONLY)
+				.end(entity -> new ChameleonStartingDurationComponent(0));
 	}
 }

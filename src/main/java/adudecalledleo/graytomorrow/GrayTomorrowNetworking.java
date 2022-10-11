@@ -2,6 +2,7 @@ package adudecalledleo.graytomorrow;
 
 import adudecalledleo.graytomorrow.util.BooleanComponent;
 
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
@@ -29,12 +30,16 @@ public final class GrayTomorrowNetworking {
 					player.sendMessage(
 							Text.translatable("message." + GrayTomorrow.NAMESPACE + ".hood_up"),
 							true);
-					GrayTomorrowStatusEffects.applyChameleon(player);
+					if (!player.hasStatusEffect(GrayTomorrowStatusEffects.TRUE_BLINDNESS)) {
+						player.addStatusEffect(new StatusEffectInstance(GrayTomorrowStatusEffects.CHAMELEON,
+								20 * 30, // 30 seconds
+								0, false, false, true));
+					}
 				} else {
 					player.sendMessage(
 							Text.translatable("message." + GrayTomorrow.NAMESPACE + ".hood_down"),
 							true);
-					GrayTomorrowStatusEffects.removeChameleonAndApplyTrueBlindness(player);
+					player.removeStatusEffect(GrayTomorrowStatusEffects.CHAMELEON);
 				}
 			}
 		});

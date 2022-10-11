@@ -48,12 +48,12 @@ public class BooleanComponent implements AutoSyncedComponent {
 
 	@Override
 	public void readFromNbt(NbtCompound tag) {
-		tag.putBoolean("Value", this.value);
+		this.value = tag.getBoolean("Value");
 	}
 
 	@Override
 	public void writeToNbt(NbtCompound tag) {
-		this.value = tag.getBoolean("Value");
+		tag.putBoolean("Value", this.value);
 	}
 
 	@Override

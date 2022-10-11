@@ -48,6 +48,15 @@ public final class CloakItem extends TrinketItem {
 
 	@Override
 	public void onEquip(ItemStack stack, SlotReference slot, LivingEntity entity) {
-		BooleanComponent.set(GrayTomorrowComponents.HOOD_UP, entity, false);
+		if (!entity.world.isClient) {
+			BooleanComponent.set(GrayTomorrowComponents.HOOD_UP, entity, false);
+		}
+	}
+
+	@Override
+	public void onUnequip(ItemStack stack, SlotReference slot, LivingEntity entity) {
+		if (!entity.world.isClient) {
+			entity.removeStatusEffect(GrayTomorrowStatusEffects.CHAMELEON);
+		}
 	}
 }

@@ -4,10 +4,13 @@ import java.util.Map;
 
 import adudecalledleo.graytomorrow.GrayTomorrowComponents;
 import adudecalledleo.graytomorrow.GrayTomorrowStatusEffects;
+import adudecalledleo.graytomorrow.LivingEntityExtensions;
 import adudecalledleo.graytomorrow.util.BooleanComponent;
+import adudecalledleo.graytomorrow.ChameleonStartingDurationComponent;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -20,7 +23,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 
 @Mixin(LivingEntity.class)
-public abstract class LivingEntityMixin extends Entity {
+public abstract class LivingEntityMixin extends Entity implements LivingEntityExtensions {
 	@SuppressWarnings("ConstantConditions")
 	private LivingEntityMixin() {
 		super(null, null);
@@ -65,6 +68,35 @@ public abstract class LivingEntityMixin extends Entity {
 		if (effect == StatusEffects.BLINDNESS) {
 			cir.setReturnValue(this.activeStatusEffects.containsKey(GrayTomorrowStatusEffects.TRUE_BLINDNESS)
 					|| this.activeStatusEffects.containsKey(StatusEffects.BLINDNESS));
+		}
+	}
+
+	@Unique
+	private int chameleonCurrentDuration;
+
+	@Override
+	public int graytomorrow$getChameleonCurrentDuration() {
+		return chameleonCurrentDuration;
+	}
+
+	@Inject(method = "onStatusEffectApplied", at = @At("HEAD"))
+	private void graytommorrow$recordChameleonStartingDurationOnApply(StatusEffectInstance effect, Entity source, CallbackInfo ci) {
+		if (!this.world.isClient && effect.getEffectType() == GrayTomorrowStatusEffects.CHAMELEON) {
+			ChameleonStartingDurationComponent.set(this, effect.getDuration());
+		}
+	}
+
+	@Inject(method = "onStatusEffectUpgraded", at = @At("HEAD"))
+	private void graytommorrow$recordChameleonStartingDurationOnUpgrade(StatusEffectInstance effect, boolean reapplyEffect, Entity source, CallbackInfo ci) {
+		if (!this.world.isClient && effect.getEffectType() == GrayTomorrowStatusEffects.CHAMELEON) {
+			ChameleonStartingDurationComponent.set(this, effect.getDuration());
+		}
+	}
+
+	@Inject(method = "onStatusEffectRemoved", at = @At("HEAD"))
+	private void graytomorrow$recordChameleonCurrentDurationOnRemove(StatusEffectInstance effect, CallbackInfo ci) {
+		if (!this.world.isClient && effect.getEffectType() == GrayTomorrowStatusEffects.CHAMELEON) {
+			this.chameleonCurrentDuration = effect.getDuration();
 		}
 	}
 }
