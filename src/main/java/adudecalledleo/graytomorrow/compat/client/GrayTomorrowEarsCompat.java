@@ -30,6 +30,7 @@ public final class GrayTomorrowEarsCompat {
 				}
 				// fallthrough
 			case HOOD_DOWN:
+				// TODO support chest feature
 				return type != EarsFeatureType.TAIL && type.isAnchoredTo(EarsAnchorPart.TORSO);
 			default:
 				throw new IllegalStateException("unhandled CloakState " + state);
