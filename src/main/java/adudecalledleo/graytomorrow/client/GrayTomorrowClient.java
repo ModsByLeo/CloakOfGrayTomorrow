@@ -32,6 +32,8 @@ public final class GrayTomorrowClient implements ClientModInitializer, ClientWor
 	@SuppressWarnings("unused")
 	public static final GrayTomorrowClient INSTANCE = new GrayTomorrowClient();
 
+	public static GrayTomorrowEarsAccessor earsAccess = new GrayTomorrowEarsAccessor() {};
+
 	private GrayTomorrowClient() {}
 
 	@Override

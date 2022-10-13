@@ -16,6 +16,7 @@ import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.util.Identifier;
@@ -65,5 +66,12 @@ public final class CloakRenderer implements ClientResourceLoaderEvents.EndResour
 						: TEXTURE));
 
 		armorModel.render(matrices, buffer, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1);
+
+		if (entity instanceof PlayerEntity player) {
+			float chest = GrayTomorrowClient.earsAccess.getChestSize(player);
+			if (chest > 0) {
+				// TODO render cloak over chest
+			}
+		}
 	}
 }

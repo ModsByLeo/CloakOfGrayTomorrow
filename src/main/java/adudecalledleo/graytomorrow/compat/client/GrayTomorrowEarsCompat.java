@@ -2,8 +2,11 @@ package adudecalledleo.graytomorrow.compat.client;
 
 import adudecalledleo.graytomorrow.CloakItem;
 import adudecalledleo.graytomorrow.GrayTomorrow;
+import adudecalledleo.graytomorrow.client.GrayTomorrowClient;
+import adudecalledleo.graytomorrow.client.GrayTomorrowEarsAccessor;
 import com.unascribed.ears.api.EarsAnchorPart;
 import com.unascribed.ears.api.EarsFeatureType;
+import com.unascribed.ears.api.features.EarsFeatures;
 import com.unascribed.ears.api.registry.EarsInhibitorRegistry;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -11,10 +14,12 @@ import net.fabricmc.api.Environment;
 import net.minecraft.entity.player.PlayerEntity;
 
 @Environment(EnvType.CLIENT)
-public final class GrayTomorrowEarsCompat {
+public final class GrayTomorrowEarsCompat implements GrayTomorrowEarsAccessor {
 	private GrayTomorrowEarsCompat() {}
 
 	public static void init() {
+		GrayTomorrowClient.earsAccess = new GrayTomorrowEarsCompat();
+
 		EarsInhibitorRegistry.register(GrayTomorrow.NAMESPACE,
 				((type, peer) -> shouldInhibit(type, (PlayerEntity) peer)));
 	}
@@ -30,10 +35,14 @@ public final class GrayTomorrowEarsCompat {
 				}
 				// fallthrough
 			case HOOD_DOWN:
-				// TODO support chest feature
 				return type != EarsFeatureType.TAIL && type.isAnchoredTo(EarsAnchorPart.TORSO);
 			default:
 				throw new IllegalStateException("unhandled CloakState " + state);
 		}
+	}
+
+	@Override
+	public float getChestSize(PlayerEntity player) {
+		return EarsFeatures.getById(player.getGameProfile().getId()).chestSize;
 	}
 }
